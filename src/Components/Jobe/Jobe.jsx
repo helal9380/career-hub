@@ -1,9 +1,11 @@
 /** @format */
 
 import { MdLocationPin, MdAttachMoney } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const Jobe = ({ jobe }) => {
   const {
+    id,
     job_title,
     company_name,
     job_type,
@@ -27,7 +29,6 @@ const Jobe = ({ jobe }) => {
       <button className="border border-[#7c3aed] py-1 px-4 ml-5 font-semibold">
         {job_type}
       </button>
-
       <div className="flex gap-5 mt-2 items-center font-semibold ">
         <h3 className="flex items-center">
           <MdLocationPin />
@@ -38,7 +39,9 @@ const Jobe = ({ jobe }) => {
           {salary}
         </h5>
       </div>
-      <button className="btn btn-primary mt-5">View Details</button>
+      <Link to={`/job/${id}`}>
+           <button className="btn btn-primary mt-5">View Details</button>
+      </Link>
     </div>
   );
 };
