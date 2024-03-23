@@ -1,7 +1,8 @@
 /** @format */
-
+import toast from 'react-hot-toast';
 import { useLoaderData, useParams } from "react-router-dom";
 import { MdAttachMoney, MdLocalPostOffice, MdLocationOn, MdOutlineMail, MdPhone } from "react-icons/md";
+import { saveCart } from "../Utility/LocalStorege";
 /** @format */
 const JobDetails = () => {
   const jobs = useLoaderData();
@@ -9,6 +10,12 @@ const JobDetails = () => {
   const idIn = parseInt(id);
   const job = jobs.find((job) => job.id === idIn);
   console.log(job);
+
+  const handleApply = () => {
+    saveCart(idIn)
+    toast.success('Successfully!');
+
+  }
   return (
     <div className="my-10">
       <div className="hero-content text-center">
@@ -21,7 +28,7 @@ const JobDetails = () => {
         <div className="col-span-2 border">
           <div>
             <h3 className="mb-3">
-              <span className="font-semibold text-lg">Job Description:</span>{" "}
+              <span className="font-semibold text-lg">Job Description:</span>
               {job.job_description}
             </h3>
             <h3 className="mb-3">
@@ -78,7 +85,7 @@ const JobDetails = () => {
                 </h3>
             </div>
           </div>
-          <button className="btn btn-primary w-full mt-5">Apply Now </button>
+          <button onClick={handleApply} className="btn btn-primary w-full mt-5">Apply Now </button>
         </div>
       </div>
     </div>
